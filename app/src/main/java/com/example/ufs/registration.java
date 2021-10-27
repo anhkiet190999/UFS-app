@@ -39,9 +39,11 @@ public class registration extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        /*if(mAuth.getCurrentUser() != null){
-            //redirect to another activity
-        }*/
+        if(mAuth.getCurrentUser() != null){
+            Toast.makeText(registration.this, "You are already logged in!", Toast.LENGTH_LONG).show();
+            Intent homeIntent = new Intent(getApplicationContext(), home.class );
+            startActivity(homeIntent);
+        }
         create = findViewById(R.id.create);
         editUsername = findViewById(R.id.username);
         editPassword = findViewById(R.id.password);

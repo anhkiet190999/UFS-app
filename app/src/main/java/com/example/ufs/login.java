@@ -30,9 +30,11 @@ public class login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
-        /*if(mAuth.getCurrentUser() != null){
-            //redirect to another activity
-        }*/
+        if(mAuth.getCurrentUser() != null){
+            Toast.makeText(login.this, "You are already logged in!", Toast.LENGTH_LONG).show();
+            Intent homeIntent = new Intent(getApplicationContext(), home.class );
+            startActivity(homeIntent);
+        }
 
         editUsername = findViewById(R.id.editUserName);
         editPassword = findViewById(R.id.editPassword);
@@ -71,8 +73,8 @@ public class login extends AppCompatActivity {
                                     progressBar.setVisibility(View.GONE);
 
                                     //redirect to another activity!
-                                    /*Intent loginIntent = new Intent(getApplicationContext(), login.class );
-                                    startActivity(loginIntent);*/
+                                    Intent homeIntent = new Intent(getApplicationContext(), home.class );
+                                    startActivity(homeIntent);
                                 }else{
                                     Toast.makeText(getApplicationContext(), "Failed to log in! Try again!", Toast.LENGTH_LONG).show();
                                     progressBar.setVisibility(View.GONE);

@@ -10,13 +10,23 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity {
 
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mAuth = FirebaseAuth.getInstance();
+
+        if(mAuth.getCurrentUser() != null){
+            Toast.makeText(MainActivity.this, "Nice to see you again!", Toast.LENGTH_LONG).show();
+            Intent homeIntent = new Intent(getApplicationContext(), home.class );
+            startActivity(homeIntent);
+        }
         Button register = findViewById(R.id.register);
         Button account = findViewById(R.id.account);
 
