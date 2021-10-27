@@ -21,11 +21,6 @@ public class MainActivity extends AppCompatActivity {
         Button account = findViewById(R.id.account);
 
         register.setOnClickListener(view -> {
-            /*Context context = getApplicationContext();
-            CharSequence text = "Registering";
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();*/
             Intent registerIntent = new Intent(getApplicationContext(), registration.class );
             startActivity(registerIntent);
         });
