@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -38,6 +39,9 @@ public class registration extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        /*if(mAuth.getCurrentUser() != null){
+            //redirect to another activity
+        }*/
         create = findViewById(R.id.create);
         editUsername = findViewById(R.id.username);
         editPassword = findViewById(R.id.password);
@@ -99,7 +103,7 @@ public class registration extends AppCompatActivity {
             return;
         }
         if(password.length() < 6){
-            editPassword.setError("password has to to be at least 5 characters");
+            editPassword.setError("password has to to be at least 6 characters");
             editPassword.requestFocus();
             return;
         }
@@ -129,10 +133,12 @@ public class registration extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
 
                                     if(task.isSuccessful()){
-                                        Toast.makeText(getApplicationContext(), "User has been registered successfully", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(registration.this, "User has been registered successfully", Toast.LENGTH_LONG).show();
                                         progressBar.setVisibility(View.GONE);
 
                                         //redirect to login activity!
+                                        Intent loginIntent = new Intent(getApplicationContext(), login.class );
+                                        startActivity(loginIntent);
                                     }else{
                                         Toast.makeText(getApplicationContext(), "Failed to register! Try again!", Toast.LENGTH_LONG).show();
                                         progressBar.setVisibility(View.GONE);
