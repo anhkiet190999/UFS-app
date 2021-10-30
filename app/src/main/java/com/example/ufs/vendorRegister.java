@@ -3,16 +3,13 @@ package com.example.ufs;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,73 +18,52 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.regex.Pattern;
-
-public class registration extends AppCompatActivity {
+public class vendorRegister extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-    private EditText editUsername, editPassword, editStudentid, editPhone, editEmail;
+    private EditText editName, editEmail, editPassword, editLicence, editPhone;
     private Button create;
-    //private Switch switchisVendor;
     private ProgressBar progressBar;
-    //private boolean isVendor = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration);
+        setContentView(R.layout.activity_vendor_register);
 
         mAuth = FirebaseAuth.getInstance();
 
         if(mAuth.getCurrentUser() != null){
-            Toast.makeText(registration.this, "You are already logged in!", Toast.LENGTH_LONG).show();
+            Toast.makeText(vendorRegister.this, "You are already logged in!", Toast.LENGTH_LONG).show();
             Intent homeIntent = new Intent(getApplicationContext(), home.class );
             startActivity(homeIntent);
         }
+
         create = findViewById(R.id.create);
-        editUsername = findViewById(R.id.username);
+        editName = findViewById(R.id.username);
         editPassword = findViewById(R.id.password);
-        editStudentid = findViewById(R.id.studentId);
+        editLicence = findViewById(R.id.studentId);
         editPhone = findViewById(R.id.phonenumber);
         editEmail = findViewById(R.id.email);
-        //switchisVendor = findViewById(R.id.isVendors);
         progressBar = findViewById(R.id.progress_circular);
-        /*switchisVendor.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-           @Override
-           public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-               if(b){
-                   isVendor = true;
-                   Context context = getApplicationContext();
-                   CharSequence text = "is vendor";
-                   int duration = Toast.LENGTH_SHORT;
-                   Toast toast = Toast.makeText(context, text, duration);
-                   toast.show();
-               }else{
-                   isVendor = false;
-               }
-           }
-       });*/
-
 
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                registerUser();
+                registerVendor();
             }
         });
-
     }
 
-    private void registerUser() {
-        String username = editUsername.getText().toString().trim();
+    private void registerVendor() {
+        String name = editName.getText().toString().trim();
         String password = editPassword.getText().toString().trim();
-        String studentID = editStudentid.getText().toString().trim();
+        String licence = editLicence.getText().toString().trim();
         String phone = editPhone.getText().toString().trim();
         String email = editEmail.getText().toString().trim();
 
-        if(username.isEmpty()){
-            editUsername.setError("user name is required!");
-            editUsername.requestFocus();
+        if(name.isEmpty()){
+            editName.setError("user name is required!");
+            editName.requestFocus();
             return;
         }
         if(email.isEmpty()){
@@ -110,9 +86,9 @@ public class registration extends AppCompatActivity {
             editPassword.requestFocus();
             return;
         }
-        if(studentID.isEmpty()){
-            editStudentid.setError("Student Id is required!");
-            editStudentid.requestFocus();
+        if(licence.isEmpty()){
+            editLicence.setError("Student Id is required!");
+            editLicence.requestFocus();
             return;
         }
         if(phone.isEmpty()){
@@ -127,16 +103,16 @@ public class registration extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            User user = new User(username, email, password, studentID, phone);
+                            Restaurant vendor = new Restaurant(name, email, password, licence, phone);
 
-                            FirebaseDatabase.getInstance().getReference("User")
+                            FirebaseDatabase.getInstance().getReference("Restaurant")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    .setValue(vendor).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
 
                                     if(task.isSuccessful()){
-                                        Toast.makeText(registration.this, "User has been registered successfully", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(vendorRegister.this, "User has been registered successfully", Toast.LENGTH_LONG).show();
                                         progressBar.setVisibility(View.GONE);
                                         mAuth.signOut();
                                         //redirect to login activity!

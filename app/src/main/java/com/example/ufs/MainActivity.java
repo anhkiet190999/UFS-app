@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         }
         Button register = findViewById(R.id.register);
         Button account = findViewById(R.id.account);
+        Button vendor = findViewById(R.id.vendor);
 
         register.setOnClickListener(view -> {
             Intent registerIntent = new Intent(getApplicationContext(), registration.class );
@@ -38,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
         account.setOnClickListener(view -> {
             Intent loginIntent = new Intent(getApplicationContext(), login.class );
             startActivity(loginIntent);
+        });
+
+        vendor.setOnClickListener(view -> {
+            Intent vendorRegisterIntent = new Intent(getApplicationContext(), vendorRegister.class );
+            startActivity(vendorRegisterIntent);
         });
 
     }

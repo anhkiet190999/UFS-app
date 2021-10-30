@@ -25,6 +25,7 @@ public class login extends AppCompatActivity {
     private Button login;
     private ProgressBar progressBar;
     private FirebaseDatabase user;
+    private int count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +43,14 @@ public class login extends AppCompatActivity {
         editPassword = findViewById(R.id.editPassword);
         login = findViewById(R.id.login);
         progressBar = findViewById(R.id.progress_circular);
-
+        count = 0;
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(count>3){
+                    //redirect to forgot password activity
+
+                }
                 String username = editUsername.getText().toString().trim();
                 String password = editPassword.getText().toString().trim();
                 if(username.isEmpty()){
@@ -78,7 +83,8 @@ public class login extends AppCompatActivity {
                                     Intent homeIntent = new Intent(getApplicationContext(), home.class );
                                     startActivity(homeIntent);
                                 }else{
-                                    Toast.makeText(getApplicationContext(), "Failed to log in! Try again!", Toast.LENGTH_LONG).show();
+                                    count+= 1;
+                                    Toast.makeText(getApplicationContext(), "Failed to log in! Try again! you have " + (3 - count) + " times left" ,Toast.LENGTH_LONG).show();
                                     progressBar.setVisibility(View.GONE);
                                 }
                             }
