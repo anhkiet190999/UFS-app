@@ -59,6 +59,24 @@
             android:textColor="@color/red"
             android:gravity="center_horizontal" />
 
+        <Button
+            android:id="@+id/logoutButon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="log out"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"/>
+
+        <ProgressBar
+            android:id="@+id/progress_circular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:layout_centerVertical="true"
+            style="?android:attr/progressBarStyleLarge"
+            android:visibility="gone"/>
+
     </RelativeLayout>
 
 </ScrollView>

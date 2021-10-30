@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class login extends AppCompatActivity {
 
@@ -23,6 +24,7 @@ public class login extends AppCompatActivity {
     private EditText editUsername, editPassword;
     private Button login;
     private ProgressBar progressBar;
+    private FirebaseDatabase user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

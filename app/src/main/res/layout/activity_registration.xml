@@ -41,7 +41,7 @@
             android:drawableStart="@drawable/person"
             android:drawableLeft="@drawable/person"
             android:gravity="center_horizontal"
-            android:hint="full name"
+            android:hint="full name / restaurant name"
             android:padding="5dip"
             android:textAlignment="center" />
 
@@ -72,7 +72,7 @@
             android:drawableStart="@drawable/studentid"
             android:drawableLeft="@drawable/studentid"
             android:gravity="center_horizontal"
-            android:hint="student id"
+            android:hint="student id / restaurant id"
             android:padding="5dip"
             android:textAlignment="center" />
 

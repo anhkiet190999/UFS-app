@@ -68,6 +68,7 @@ public class registration extends AppCompatActivity {
            }
        });
 
+
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -137,7 +138,7 @@ public class registration extends AppCompatActivity {
                                     if(task.isSuccessful()){
                                         Toast.makeText(registration.this, "User has been registered successfully", Toast.LENGTH_LONG).show();
                                         progressBar.setVisibility(View.GONE);
-
+                                        mAuth.signOut();
                                         //redirect to login activity!
                                         Intent loginIntent = new Intent(getApplicationContext(), login.class );
                                         startActivity(loginIntent);
