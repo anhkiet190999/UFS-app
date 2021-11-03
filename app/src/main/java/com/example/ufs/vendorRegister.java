@@ -103,9 +103,9 @@ public class vendorRegister extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            Restaurant vendor = new Restaurant(name, email, password, licence, phone);
+                            Vendor vendor = new Vendor(name, email, password, licence, phone);
 
-                            FirebaseDatabase.getInstance().getReference("Restaurant")
+                            FirebaseDatabase.getInstance().getReference("Vendor")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(vendor).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override

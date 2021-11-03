@@ -23,6 +23,7 @@ public class home extends AppCompatActivity {
 
         progressBar = findViewById(R.id.progress_circular);
         logout = findViewById(R.id.logoutButon);
+
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
