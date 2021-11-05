@@ -104,6 +104,7 @@ public class vendorRegister extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             Vendor vendor = new Vendor(name, email, password, licence, phone);
+                            Store store = new Store(name, phone);
 
                             FirebaseDatabase.getInstance().getReference("Vendor")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -124,6 +125,10 @@ public class vendorRegister extends AppCompatActivity {
                                     }
                                 }
                             });
+
+                            FirebaseDatabase.getInstance().getReference("Store")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                    .setValue(store);
                         }else{
                             Toast.makeText(getApplicationContext(), "Failed to register! Try again!", Toast.LENGTH_LONG).show();
                             progressBar.setVisibility(View.GONE);

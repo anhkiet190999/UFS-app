@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UFS">
         <activity
+            android:name=".changeMenu"
+            android:exported="true" />
+        <activity
             android:name=".restaurant"
             android:exported="true" />
         <activity
