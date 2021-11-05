@@ -43,6 +43,33 @@ public class login extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         if(mAuth.getCurrentUser() != null){
             Toast.makeText(login.this, "You are already logged in!", Toast.LENGTH_LONG).show();
+
+            String userId = mAuth.getCurrentUser().getUid();
+
+            mDatabase = FirebaseDatabase.getInstance().getReference()
+                    .child("Vendor").child(userId);
+
+            ValueEventListener eventListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.exists()) {
+
+                        Intent restaurantIntent = new Intent(getApplicationContext(), restaurant.class );
+                        startActivity(restaurantIntent);
+                    }else{
+
+                        //redirect to another activity!
+                        Intent homeIntent = new Intent(getApplicationContext(), home.class );
+                        startActivity(homeIntent);
+                    }
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.e("firebase", "Error getting data");
+                }
+            };
+            mDatabase.addListenerForSingleValueEvent(eventListener);
+
             Intent homeIntent = new Intent(getApplicationContext(), home.class );
             startActivity(homeIntent);
         }
@@ -95,6 +122,9 @@ public class login extends AppCompatActivity {
                                             if(dataSnapshot.exists()) {
                                                 Toast.makeText(login.this, "Vendor has been logged in successfully", Toast.LENGTH_LONG).show();
                                                 progressBar.setVisibility(View.GONE);
+
+                                                Intent restaurantIntent = new Intent(getApplicationContext(), restaurant.class );
+                                                startActivity(restaurantIntent);
                                             }else{
                                                 Toast.makeText(login.this, "User has been logged in successfully", Toast.LENGTH_LONG).show();
                                                 progressBar.setVisibility(View.GONE);
