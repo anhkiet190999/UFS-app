@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +20,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.regex.Pattern;
 
@@ -31,7 +36,7 @@ public class registration extends AppCompatActivity {
     //private Switch switchisVendor;
     private ProgressBar progressBar;
     //private boolean isVendor = false;
-
+    private DatabaseReference mDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,8 +46,31 @@ public class registration extends AppCompatActivity {
 
         if(mAuth.getCurrentUser() != null){
             Toast.makeText(registration.this, "You are already logged in!", Toast.LENGTH_LONG).show();
-            Intent homeIntent = new Intent(getApplicationContext(), home.class );
-            startActivity(homeIntent);
+            String userId = mAuth.getCurrentUser().getUid();
+
+            mDatabase = FirebaseDatabase.getInstance().getReference()
+                    .child("Vendor").child(userId);
+
+            ValueEventListener eventListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.exists()) {
+
+                        Intent restaurantIntent = new Intent(getApplicationContext(), restaurant.class );
+                        startActivity(restaurantIntent);
+                    }else{
+
+                        //redirect to another activity!
+                        Intent homeIntent = new Intent(getApplicationContext(), home.class );
+                        startActivity(homeIntent);
+                    }
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.e("firebase", "Error getting data");
+                }
+            };
+            mDatabase.addListenerForSingleValueEvent(eventListener);
         }
         create = findViewById(R.id.create);
         editUsername = findViewById(R.id.username);

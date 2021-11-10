@@ -129,6 +129,7 @@ public class vendorRegister extends AppCompatActivity {
                             FirebaseDatabase.getInstance().getReference("Store")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(store);
+                            //FirebaseDatabase.getInstance().getReference("Store").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("menu");
                         }else{
                             Toast.makeText(getApplicationContext(), "Failed to register! Try again!", Toast.LENGTH_LONG).show();
                             progressBar.setVisibility(View.GONE);

@@ -23,9 +23,10 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         if(mAuth.getCurrentUser() != null){
-            Toast.makeText(MainActivity.this, "Nice to see you again!", Toast.LENGTH_LONG).show();
+            /*Toast.makeText(MainActivity.this, "Nice to see you again!", Toast.LENGTH_LONG).show();
             Intent homeIntent = new Intent(getApplicationContext(), home.class );
-            startActivity(homeIntent);
+            startActivity(homeIntent);*/
+            mAuth.signOut();
         }
         Button register = findViewById(R.id.register);
         Button account = findViewById(R.id.account);

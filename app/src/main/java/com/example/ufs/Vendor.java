@@ -3,13 +3,7 @@ package com.example.ufs;
 public class Vendor {
     public String name, email, password, licence, phone;
     public boolean isVendor;
-    /*public class food{
-        String name;
-        double price;
-    }
-    public class menu{
-        food item;
-    }*/
+
 
     public Vendor(){
 
