@@ -29,6 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class changeMenu extends AppCompatActivity implements add_item.addItemListener{
 
@@ -36,7 +37,7 @@ public class changeMenu extends AppCompatActivity implements add_item.addItemLis
     private DatabaseReference mDatabase;
     private TextView name;
     private Button add, remove;
-    public ArrayList<Food> menu;
+    public ArrayList<Food> menu = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,13 +81,13 @@ public class changeMenu extends AppCompatActivity implements add_item.addItemLis
             ValueEventListener eventListener1 = new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    //menu.clear();
-                    for(DataSnapshot ds : snapshot.getChildren()){
-                        String itemName = ds.getKey();
-                        String price = ds.getValue(String.class);
-                        Toast.makeText(changeMenu.this, itemName + price, Toast.LENGTH_LONG).show();
+                    menu.clear();
+                    if(snapshot.exists()){
+                        for(DataSnapshot ds : snapshot.getChildren()){
+                            Food f = ds.getValue(Food.class);
+                            menu.add(f);
+                        }
                     }
-
                 }
 
                 @Override
@@ -107,8 +108,6 @@ public class changeMenu extends AppCompatActivity implements add_item.addItemLis
             @Override
             public void onClick(View view) {
                 openDialog();
-
-
             }
         });
 
@@ -120,21 +119,20 @@ public class changeMenu extends AppCompatActivity implements add_item.addItemLis
 
     @Override
     public void applyText(String itemName, String price){
-        //Food f = new Food(itemName, price);
-
+        Food f = new Food(itemName, price);
+        menu.add(f);
         FirebaseDatabase.getInstance().getReference("Store")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Menu")
-                .child(itemName).setValue(price).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(changeMenu.this, "added", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(changeMenu.this, "fail to add", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
+                .setValue(menu).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(changeMenu.this, "added", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(changeMenu.this, "fail to add", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
 
     }

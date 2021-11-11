@@ -1,8 +1,8 @@
 package com.example.ufs;
 
 public class Food {
-    String item;
-    String price;
+    public String item;
+    public String price;
 
     public Food(){
 
