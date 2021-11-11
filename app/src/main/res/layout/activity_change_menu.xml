@@ -9,37 +9,61 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingLeft="16dp"
-        android:paddingRight="16dp" >
+        android:paddingRight="16dp">
 
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
             android:gravity="center_horizontal"
-            android:layout_centerHorizontal="true"
             android:textColor="@color/red"
-            android:textSize="30dp"/>
+            android:textSize="20dp" />
 
+        <Button
+            android:id="@+id/add"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="40dp"
+            android:text="add item"
+            android:background="@drawable/textbox"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/red"/>
 
-
-
+        <Button
+            android:id="@+id/remove"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="50dp"
+            android:text="remove item"
+            android:background="@drawable/textbox"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/red"
+            android:layout_toRightOf="@+id/add"/>
 
 
         <ProgressBar
             android:id="@+id/progress_circular"
+            style="?android:attr/progressBarStyleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:gravity="center_horizontal"
             android:layout_centerVertical="true"
-            style="?android:attr/progressBarStyleLarge"
-            android:visibility="gone"/>
+            android:gravity="center_horizontal"
+            android:visibility="gone" />
 
         <TextView
+            android:id="@+id/hidden"
             android:layout_width="wrap_content"
             android:layout_height="800dp"
-            android:layout_alignParentBottom="true"/>
+            android:layout_alignParentBottom="true" />
 
     </RelativeLayout>
 

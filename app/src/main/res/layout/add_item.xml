@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/end_color">
+
+    <!--<TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Item:"
+        android:textSize="30dp"/>-->
+
+
+    <EditText
+        android:id="@+id/edit_itemName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:hint="item name" />
+
+    <EditText
+        android:id="@+id/edit_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_itemName"
+        android:layout_marginTop="20dp"
+        android:hint="price"
+        android:inputType="numberDecimal" />
+
+    <!--<Button
+        android:id="@+id/add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="add"
+        android:background="@color/light_blue"
+        android:layout_below="@+id/edit_price"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="50dp"/>
+
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="add"
+        android:background="@color/light_blue"
+        android:layout_below="@+id/edit_price"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="100dp"
+        android:layout_toRightOf="@+id/add"/>-->
+</RelativeLayout>
