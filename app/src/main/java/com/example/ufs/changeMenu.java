@@ -12,8 +12,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,11 +40,17 @@ public class changeMenu extends AppCompatActivity implements add_item.addItemLis
     private TextView name;
     private Button add, remove;
     public ArrayList<Food> menu = new ArrayList<>();
+    private static final String TAG = "changeMenu";
+    public ListView mListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_menu);
+
+        Log.d(TAG, "onCreate: Started.");
+        mListView = (ListView) findViewById(R.id.listview);
+
         mAuth = FirebaseAuth.getInstance();
 
         name = findViewById(R.id.name);
@@ -87,9 +95,10 @@ public class changeMenu extends AppCompatActivity implements add_item.addItemLis
                             Food f = ds.getValue(Food.class);
                             menu.add(f);
                         }
+                        FoodListAdapter adapter = new FoodListAdapter(changeMenu.this, R.layout.adapter_view_menu, menu);
+                        mListView.setAdapter(adapter);
                     }
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
 
@@ -104,12 +113,18 @@ public class changeMenu extends AppCompatActivity implements add_item.addItemLis
             startActivity(restaurantIntent);
         }
 
+
+
+
+
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openDialog();
             }
         });
+
+
 
     }
     public void openDialog(){
@@ -133,7 +148,8 @@ public class changeMenu extends AppCompatActivity implements add_item.addItemLis
                         }
                     }
                 });
-
+        FoodListAdapter adapter = new FoodListAdapter(changeMenu.this, R.layout.adapter_view_menu, menu);
+        mListView.setAdapter(adapter);
 
     }
 }
