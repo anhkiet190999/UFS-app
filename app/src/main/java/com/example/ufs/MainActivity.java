@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         Button register = findViewById(R.id.register);
         Button account = findViewById(R.id.account);
         Button vendor = findViewById(R.id.vendor);
+        Button search = findViewById(R.id.search);
 
         register.setOnClickListener(view -> {
             Intent registerIntent = new Intent(getApplicationContext(), registration.class );
@@ -45,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
         vendor.setOnClickListener(view -> {
             Intent vendorRegisterIntent = new Intent(getApplicationContext(), vendorRegister.class );
             startActivity(vendorRegisterIntent);
+        });
+
+        search.setOnClickListener(view -> {
+            Intent searchIntent = new Intent(getApplicationContext(), search.class);
+            startActivity(searchIntent);
         });
 
     }

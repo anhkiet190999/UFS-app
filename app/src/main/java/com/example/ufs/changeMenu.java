@@ -113,18 +113,12 @@ public class changeMenu extends AppCompatActivity implements add_item.addItemLis
             startActivity(restaurantIntent);
         }
 
-
-
-
-
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openDialog();
             }
         });
-
-
 
     }
     public void openDialog(){
