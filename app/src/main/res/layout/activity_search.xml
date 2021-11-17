@@ -2,8 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:fillViewport="true"
-    android:background="@color/light_blue">
+    android:background="@color/light_blue"
+    tools:context=".search">
 
     <TextView
         android:id="@+id/text"
@@ -17,14 +19,42 @@
         android:gravity="center_horizontal" />
 
 
-    <SearchView
+    <!--<SearchView
         android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/text"
         android:layout_marginTop="50dp"
-        android:background="@drawable/custome_searchbar"/>
+        android:background="@drawable/custome_searchbar"/>-->
 
+    <AutoCompleteTextView
+        android:id="@+id/txtSearch"
+        android:layout_width="380dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/text"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/custome_searchbar"
+        android:layout_centerHorizontal="true"
+        android:drawableStart="@drawable/search_icon"
+        android:drawableLeft="@drawable/search_icon" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/red"
+        android:textSize="20dp"
+        android:layout_below="@+id/txtSearch"/>
+
+    <ListView
+        android:id="@+id/listData"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/name"
+        android:layout_marginTop="30dp"/>
 
 
 
