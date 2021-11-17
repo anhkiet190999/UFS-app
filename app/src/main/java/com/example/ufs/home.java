@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ public class home extends AppCompatActivity {
     private Button logout;
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
+    ImageButton order;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,7 @@ public class home extends AppCompatActivity {
 
         progressBar = findViewById(R.id.progress_circular);
         logout = findViewById(R.id.logoutButon);
+        order = findViewById(R.id.order);
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +38,11 @@ public class home extends AppCompatActivity {
                 Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class );
                 startActivity(mainIntent);
             }
+        });
+
+        order.setOnClickListener(view -> {
+            Intent placeOrderIntent = new Intent(getApplicationContext(), place_order.class );
+            startActivity(placeOrderIntent);
         });
     }
 }
