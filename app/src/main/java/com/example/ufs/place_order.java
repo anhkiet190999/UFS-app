@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class place_order extends AppCompatActivity {
+public class place_order extends AppCompatActivity implements order_item.orderItemListener{
 
     DatabaseReference mref;
     private ListView listdata;
@@ -118,6 +118,14 @@ public class place_order extends AppCompatActivity {
                     text2.setVisibility(View.VISIBLE);
                     numItem_v.setVisibility(View.VISIBLE);
                     total_v.setVisibility(View.VISIBLE);
+
+                    listdata.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            Food f = (Food) listdata.getItemAtPosition(i);
+                            openOrderDialog(f.item, Float.parseFloat(f.price));
+                        }
+                    });
                 }else{ //this is the case when search by food
                     Log.d("Store", "error getting data");
                 }
@@ -128,6 +136,15 @@ public class place_order extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void openOrderDialog(String foodName, float price){
+        order_item orderItem = new order_item(foodName, price);
+        orderItem.show(getSupportFragmentManager(), "order item");
+    }
+
+    @Override
+    public void applyOrder(int quantity, float price){
 
     }
 }
