@@ -27,7 +27,7 @@ public class place_order extends AppCompatActivity {
     DatabaseReference mref;
     private ListView listdata;
     private TextView text, text1, text2, numItem_v, total_v;
-    private Button checkout;
+    private Button viewBag;
 
     public ArrayList<String> names = new ArrayList<>();
     public ArrayList<Food> menu = new ArrayList<>();
@@ -39,7 +39,7 @@ public class place_order extends AppCompatActivity {
 
         listdata = findViewById(R.id.listData);
         text = findViewById(R.id.text);
-        checkout = findViewById(R.id.checkOut);
+        viewBag = findViewById(R.id.bag);
         text1 = findViewById(R.id.text1);
         text2 = findViewById(R.id.text2);
         numItem_v = findViewById(R.id.numItem);
@@ -68,7 +68,7 @@ public class place_order extends AppCompatActivity {
         Log.d("Store", "reading data");
         //ArrayList<String> names = new ArrayList<>();
         if (snapshot.exists()) {
-            checkout.setVisibility(View.GONE);
+            viewBag.setVisibility(View.GONE);
             text1.setVisibility(View.INVISIBLE);
             text2.setVisibility(View.INVISIBLE);
             numItem_v.setVisibility(View.INVISIBLE);
@@ -113,7 +113,7 @@ public class place_order extends AppCompatActivity {
                     text.setText(restaurant);
                     FoodListAdapter adapter = new FoodListAdapter(place_order.this, R.layout.adapter_view_menu, menu);
                     listdata.setAdapter(adapter);
-                    checkout.setVisibility(View.VISIBLE);
+                    viewBag.setVisibility(View.VISIBLE);
                     text1.setVisibility(View.VISIBLE);
                     text2.setVisibility(View.VISIBLE);
                     numItem_v.setVisibility(View.VISIBLE);

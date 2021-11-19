@@ -69,7 +69,6 @@ public class changeMenu extends AppCompatActivity implements add_item.addItemLis
                        Store store = dataSnapshot.getValue(Store.class);
                        name.setText(store.name);
 
-
                     }else{
                         //redirect to another activity!
                         Toast.makeText(changeMenu.this, "error", Toast.LENGTH_LONG).show();

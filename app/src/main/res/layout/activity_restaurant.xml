@@ -11,18 +11,21 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp" >
 
-        <SearchView
-            android:id="@+id/search"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/custome_searchbar"/>
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/red"
+            android:textSize="20dp" />
 
         <ImageButton
             android:id="@+id/menu"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_below="@+id/search"
+            android:layout_below="@+id/name"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="50dp"
             android:background="@drawable/menu_icon" />
@@ -41,7 +44,7 @@
             android:id="@+id/delivery"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_below="@+id/search"
+            android:layout_below="@+id/name"
             android:layout_toRightOf="@+id/menu"
             android:layout_marginLeft="150dp"
             android:layout_marginTop="50dp"
@@ -64,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/search"
+            android:layout_below="@+id/name"
             android:layout_marginTop="500dp"
             android:text="log out" />
 

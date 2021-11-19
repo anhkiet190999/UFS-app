@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +33,7 @@ public class search extends AppCompatActivity {
     private TextView textName;
     public ArrayList<String> names = new ArrayList<>();
     public ArrayList<Food> menu = new ArrayList<>();
+    private Button order;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class search extends AppCompatActivity {
         listdata = (ListView) findViewById(R.id.listData);
         txtSearch = (AutoCompleteTextView) findViewById(R.id.txtSearch);
         textName = (TextView) findViewById(R.id.name);
+        order = (Button) findViewById(R.id.order);
 
         ValueEventListener even = new ValueEventListener() {
             @Override
@@ -125,6 +128,7 @@ public class search extends AppCompatActivity {
                    // Toast.makeText(search.this, "search by food", Toast.LENGTH_LONG).show();
                     SearchByFoodName(search);
                 }
+                order.setVisibility(View.VISIBLE);
             }
 
             @Override

@@ -68,7 +68,8 @@
         android:layout_centerHorizontal="true"
         android:gravity="center_horizontal"
         android:textSize="30dp"
-        android:background="@drawable/custome_bar"/>
+        android:background="@drawable/custome_bar"
+        android:visibility="gone"/>
 
 
 

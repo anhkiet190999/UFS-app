@@ -11,12 +11,26 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp" >
 
-        <SearchView
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/red"
+            android:textSize="20dp" />
+
+        <Button
             android:id="@+id/search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:background="@drawable/custome_searchbar"/>
+            android:background="@drawable/custome_searchbar"
+            android:text="Search"
+            android:textSize="30dp"
+            android:layout_below="@+id/name"/>
+
 
         <ImageButton
             android:id="@+id/order"
