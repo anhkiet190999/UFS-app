@@ -3,6 +3,7 @@ package com.example.ufs;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -75,6 +76,9 @@ public class place_order extends AppCompatActivity implements order_item.orderIt
             public void onClick(View view) {
                 String userId = mAuth.getCurrentUser().getUid().toString().trim();
                 mDatabase.child(userId).setValue(bag);
+
+                Intent bagIntent = new Intent(getApplicationContext(), bag.class );
+                startActivity(bagIntent);
             }
         });
     }
@@ -166,9 +170,12 @@ public class place_order extends AppCompatActivity implements order_item.orderIt
         DecimalFormat df2 = new DecimalFormat("####.##");
         df2.format(total);
         numItem_v.setText(Integer.toString(total_item));
-        total_v.setText(Float.toString(total));
+        total_v.setText(Float.toString(total).trim());
 
-        Order o = new Order(foodName, quantity, total_price);
-        bag.add(o);
+        if(quantity != 0){
+            Order o = new Order(foodName, quantity, total_price);
+            bag.add(o);
+        }
+
     }
 }
