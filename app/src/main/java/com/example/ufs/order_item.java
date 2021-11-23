@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class order_item extends AppCompatDialogFragment {
@@ -64,6 +65,8 @@ public class order_item extends AppCompatDialogFragment {
                     quantity--;
                     total_price = (float)quantity*price;
                     quantity_v.setText(Integer.toString(quantity));
+                    DecimalFormat df2 = new DecimalFormat("####.##");
+                    df2.format(total_price);
                     price_v.setText(Float.toString(total_price).trim());
                 }
             }
@@ -75,6 +78,8 @@ public class order_item extends AppCompatDialogFragment {
                 quantity++;
                 total_price = (float)quantity*price;
                 quantity_v.setText(Integer.toString(quantity));
+                DecimalFormat df2 = new DecimalFormat("####.##");
+                df2.format(total_price);
                 price_v.setText(Float.toString(total_price).trim());
             }
         });
@@ -93,7 +98,7 @@ public class order_item extends AppCompatDialogFragment {
 
     }
     public interface orderItemListener{
-        void applyOrder(int quantity, float price);
+        void applyOrder(int quantity, float total_price);
     }
 
     public order_item(String foodName, float price) {

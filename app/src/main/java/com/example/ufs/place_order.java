@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class place_order extends AppCompatActivity implements order_item.orderItemListener{
@@ -28,6 +29,8 @@ public class place_order extends AppCompatActivity implements order_item.orderIt
     private ListView listdata;
     private TextView text, text1, text2, numItem_v, total_v;
     private Button viewBag;
+    public int total_item = 0;
+    public float total = 0;
 
     public ArrayList<String> names = new ArrayList<>();
     public ArrayList<Food> menu = new ArrayList<>();
@@ -144,7 +147,12 @@ public class place_order extends AppCompatActivity implements order_item.orderIt
     }
 
     @Override
-    public void applyOrder(int quantity, float price){
-
+    public void applyOrder(int quantity, float total_price){
+        total_item += quantity;
+        total += total_price;
+        DecimalFormat df2 = new DecimalFormat("####.##");
+        df2.format(total);
+        numItem_v.setText(Integer.toString(total_item));
+        total_v.setText(Float.toString(total));
     }
 }
