@@ -16,6 +16,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DecimalFormat;
@@ -49,7 +50,7 @@ public class order_item extends AppCompatDialogFragment {
                 .setPositiveButton("add", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        listener.applyOrder(quantity, total_price);
+                        listener.applyOrder(foodName, quantity, total_price);
                     }
                 });
 
@@ -98,7 +99,7 @@ public class order_item extends AppCompatDialogFragment {
 
     }
     public interface orderItemListener{
-        void applyOrder(int quantity, float total_price);
+        void applyOrder(String foodName, int quantity, float total_price);
     }
 
     public order_item(String foodName, float price) {

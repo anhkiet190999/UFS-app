@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,8 +33,12 @@ public class place_order extends AppCompatActivity implements order_item.orderIt
     public int total_item = 0;
     public float total = 0;
 
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Order");
+
     public ArrayList<String> names = new ArrayList<>();
     public ArrayList<Food> menu = new ArrayList<>();
+    public ArrayList<Order> bag = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +69,14 @@ public class place_order extends AppCompatActivity implements order_item.orderIt
         };
 
         mref.addListenerForSingleValueEvent(even);
+
+        viewBag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String userId = mAuth.getCurrentUser().getUid().toString().trim();
+                mDatabase.child(userId).setValue(bag);
+            }
+        });
     }
 
 
@@ -147,12 +160,15 @@ public class place_order extends AppCompatActivity implements order_item.orderIt
     }
 
     @Override
-    public void applyOrder(int quantity, float total_price){
+    public void applyOrder(String foodName, int quantity, float total_price){
         total_item += quantity;
         total += total_price;
         DecimalFormat df2 = new DecimalFormat("####.##");
         df2.format(total);
         numItem_v.setText(Integer.toString(total_item));
         total_v.setText(Float.toString(total));
+
+        Order o = new Order(foodName, quantity, total_price);
+        bag.add(o);
     }
 }
