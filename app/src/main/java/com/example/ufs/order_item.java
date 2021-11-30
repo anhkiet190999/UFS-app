@@ -12,12 +12,16 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -31,6 +35,11 @@ public class order_item extends AppCompatDialogFragment {
 
     public int quantity = 0;
     public float total_price = 0;
+
+    public ArrayList<Order> bag = new ArrayList<>();
+
+    public FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    public DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Order");
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState){
@@ -54,10 +63,42 @@ public class order_item extends AppCompatDialogFragment {
                     }
                 });
 
+
         minus = view.findViewById(R.id.minus);
         plus = view.findViewById(R.id.plus);
         quantity_v = view.findViewById(R.id.quantity);
         price_v = view.findViewById(R.id.price);
+
+        /*mDatabase = mDatabase.child(mAuth.getCurrentUser().getUid());
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    for(DataSnapshot ds : snapshot.getChildren()){
+                        Order o = ds.getValue(Order.class);
+                        if(o.getFoodName() == foodName){
+                            quantity = o.getQuantity();
+                            quantity_v.setText(Integer.toString(quantity));
+                            //break;
+                        }
+                    }
+
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        };
+        mDatabase.addListenerForSingleValueEvent(eventListener);*/
+
+        for(Order order : bag){
+            if(order.getFoodName() == foodName){
+                quantity = order.getQuantity();
+                quantity_v.setText(Integer.toString(quantity));
+                break;
+            }
+        }
 
         minus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,8 +143,9 @@ public class order_item extends AppCompatDialogFragment {
         void applyOrder(String foodName, int quantity, float total_price);
     }
 
-    public order_item(String foodName, float price) {
+    public order_item(String foodName, float price, ArrayList<Order> bag) {
         this.foodName = foodName;
         this.price = price;
+        this.bag = bag;
     }
 }

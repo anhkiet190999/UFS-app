@@ -3,6 +3,7 @@ package com.example.ufs;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
@@ -129,6 +130,17 @@ public class search extends AppCompatActivity {
                     SearchByFoodName(search);
                 }
                 order.setVisibility(View.VISIBLE);
+                order.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if(FirebaseAuth.getInstance().getCurrentUser() == null) {
+                            Toast.makeText(search.this, "You need to log in to order", Toast.LENGTH_LONG).show();
+                        }else{
+                            Intent orderIntent = new Intent(getApplicationContext(), place_order.class );
+                            startActivity(orderIntent);
+                        }
+                    }
+                });
             }
 
             @Override

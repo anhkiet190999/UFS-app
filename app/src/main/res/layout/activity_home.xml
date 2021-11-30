@@ -73,6 +73,26 @@
             android:textColor="@color/red"
             android:gravity="center_horizontal" />
 
+        <ImageButton
+            android:id="@+id/bag"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/order"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/bag_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bag"
+            android:text="BAG"
+            android:layout_marginLeft="65dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            android:gravity="center_horizontal" />
+
         <Button
             android:id="@+id/logoutButon"
             android:layout_width="wrap_content"

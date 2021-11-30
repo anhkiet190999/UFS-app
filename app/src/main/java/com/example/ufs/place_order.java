@@ -159,7 +159,7 @@ public class place_order extends AppCompatActivity implements order_item.orderIt
     }
 
     public void openOrderDialog(String foodName, float price){
-        order_item orderItem = new order_item(foodName, price);
+        order_item orderItem = new order_item(foodName, price, bag);
         orderItem.show(getSupportFragmentManager(), "order item");
     }
 
@@ -174,7 +174,17 @@ public class place_order extends AppCompatActivity implements order_item.orderIt
 
         if(quantity != 0){
             Order o = new Order(foodName, quantity, total_price);
-            bag.add(o);
+            boolean contain = false;
+            for(Order order : bag){
+                if(order.getFoodName() == o.getFoodName()){
+                    order.setQuantity(o.quantity);
+                    contain = true;
+                    break;
+                }
+            }
+            if(!contain){
+                bag.add(o);
+            }
         }
 
     }
