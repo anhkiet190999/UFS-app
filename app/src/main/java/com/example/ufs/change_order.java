@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
@@ -29,7 +30,7 @@ public class change_order extends AppCompatDialogFragment {
     public ArrayList<Order> bag = new ArrayList<>();
 
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Order");
+    private DatabaseReference mDatabase;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState){
@@ -50,13 +51,14 @@ public class change_order extends AppCompatDialogFragment {
         remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mDatabase = mDatabase.child(mAuth.getCurrentUser().getUid());
+                mDatabase = FirebaseDatabase.getInstance().getReference("Order").child(mAuth.getCurrentUser().getUid());
 
 
                 ValueEventListener eventListener = new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if(dataSnapshot.exists()) {
+                            bag.clear();
                             for(DataSnapshot ds : dataSnapshot.getChildren()){
                                 Order o = ds.getValue(Order.class);
                                 if(o.getFoodName() != order.getFoodName()){
