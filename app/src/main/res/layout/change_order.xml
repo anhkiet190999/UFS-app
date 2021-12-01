@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/end_color">
+
+
+    <Button
+        android:id="@+id/remove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="remove"
+        android:background="@color/light_blue"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="50dp"/>
+
+    <Button
+        android:id="@+id/modify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="modify"
+        android:background="@color/light_blue"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="100dp"
+        android:layout_toRightOf="@+id/remove"/>
+</RelativeLayout>

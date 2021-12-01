@@ -25,6 +25,7 @@
         <entry key="app/src/main/res/layout/adapter_view_bag.xml" value="0.3134057971014493" />
         <entry key="app/src/main/res/layout/adapter_view_menu.xml" value="0.39166666666666666" />
         <entry key="app/src/main/res/layout/add_item.xml" value="0.39166666666666666" />
+        <entry key="app/src/main/res/layout/change_order.xml" value="0.39166666666666666" />
         <entry key="app/src/main/res/layout/oder_dialog.xml" value="0.39166666666666666" />
         <entry key="app/src/main/res/layout/order_dialog.xml" value="0.39166666666666666" />
         <entry key="app/src/main/res/layout/search.xml" value="0.2703125" />

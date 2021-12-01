@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:fillViewport="true"
-    android:background="@color/light_blue"
+    android:background="@drawable/login"
     tools:context=".search">
 
     <TextView

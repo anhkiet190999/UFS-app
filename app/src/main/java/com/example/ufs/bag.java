@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -57,6 +59,15 @@ public class bag extends AppCompatActivity {
                     mListView.setAdapter(adapter);
 
                     total.setText(Float.toString(total_price).trim());
+
+                    mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            Order o = (Order) mListView.getItemAtPosition(i);
+                            change_order changeOrder = new change_order(o);
+                            changeOrder.show(getSupportFragmentManager(), "change order");
+                        }
+                    });
                 }
             }
             @Override

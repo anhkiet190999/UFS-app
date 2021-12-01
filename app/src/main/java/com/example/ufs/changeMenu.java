@@ -143,6 +143,5 @@ public class changeMenu extends AppCompatActivity implements add_item.addItemLis
                 });
         FoodListAdapter adapter = new FoodListAdapter(changeMenu.this, R.layout.adapter_view_menu, menu);
         mListView.setAdapter(adapter);
-
     }
 }
