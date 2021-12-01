@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+
+
+    <TextView
+        android:id="@+id/payText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="688dp"
+        android:gravity="center_horizontal"
+        android:text="Payment"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30dp" />
+
+    <Button
+        android:id="@+id/credit"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="300dp"
+        android:text="Credit Card"
+        android:textColor="#000000"
+        app:backgroundTint="#B0BACC" />
+
+    <Button
+        android:id="@+id/studID"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="200dp"
+        android:text="Student ID"
+        android:textColor="#000000"
+        app:backgroundTint="#B0BACC" />
+
+    <Button
+        android:id="@+id/cash"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginBottom="200dp"
+        android:text="Cash"
+        android:textColor="#000000"
+        app:backgroundTint="#B0BACC" />
+
+    <TextView
+        android:id="@+id/tip"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="500dp"
+        android:layout_marginBottom="300dp"
+        android:text="Tip Amount:"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/coupon"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="600dp"
+        android:layout_marginBottom="300dp"
+        android:gravity="center"
+        android:text="Coupon:"
+        android:textAlignment="center"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginBottom="300dp"
+        android:gravity="center"
+        android:text="Total:"
+        android:textAlignment="center"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/enterTip"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginBottom="300dp"
+        android:layout_toRightOf="@+id/tip"
+        android:hint="Enter Tip"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/enterCoup"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="600dp"
+        android:layout_marginBottom="300dp"
+        android:layout_toRightOf="@+id/coupon"
+        android:hint="Enter Coupon"
+        android:textSize="20dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="200dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:src="@drawable/utaback" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="100dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:src="@drawable/card" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="300dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:src="@drawable/cash" />
+
+</RelativeLayout>

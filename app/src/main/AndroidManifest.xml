@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UFS">
         <activity
+            android:name=".student_id"
+            android:exported="true" />
+        <activity
+            android:name=".credit_card_form"
+            android:exported="true" />
+        <activity
+            android:name=".payment"
+            android:exported="true" />
+        <activity
             android:name=".bag"
             android:exported="true" />
         <activity

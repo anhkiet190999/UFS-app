@@ -14,13 +14,19 @@
         <entry key="app/src/main/res/drawable/textbox.xml" value="0.3932291666666667" />
         <entry key="app/src/main/res/layout/activity_bag.xml" value="0.3640625" />
         <entry key="app/src/main/res/layout/activity_change_menu.xml" value="0.3776041666666667" />
+        <entry key="app/src/main/res/layout/activity_credit_card_form.xml" value="0.1671875" />
+        <entry key="app/src/main/res/layout/activity_delivery1.xml" value="0.3640625" />
+        <entry key="app/src/main/res/layout/activity_delivery_stats.xml" value="0.1671875" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.403125" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_payment.xml" value="0.3640625" />
         <entry key="app/src/main/res/layout/activity_place_order.xml" value="0.39166666666666666" />
+        <entry key="app/src/main/res/layout/activity_receiveddelivery.xml" value="0.1671875" />
         <entry key="app/src/main/res/layout/activity_registration.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_restaurant.xml" value="0.3776041666666667" />
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.2703125" />
+        <entry key="app/src/main/res/layout/activity_student_id.xml" value="0.1671875" />
         <entry key="app/src/main/res/layout/activity_vendor_register.xml" value="0.1" />
         <entry key="app/src/main/res/layout/adapter_view_bag.xml" value="0.3134057971014493" />
         <entry key="app/src/main/res/layout/adapter_view_menu.xml" value="0.39166666666666666" />

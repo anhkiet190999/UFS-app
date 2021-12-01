@@ -3,6 +3,7 @@ package com.example.ufs;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -41,6 +42,12 @@ public class bag extends AppCompatActivity {
 
         mListView = findViewById(R.id.listData);
         total = findViewById(R.id.total);
+        checkout = findViewById(R.id.checkout);
+
+        checkout.setOnClickListener(view -> {
+            Intent paymentIntent = new Intent(getApplicationContext(), payment.class );
+            startActivity(paymentIntent);
+        });
 
         mDatabase = FirebaseDatabase.getInstance().getReference("Order").child(mAuth.getCurrentUser().getUid());
         ValueEventListener eventListener1 = new ValueEventListener() {

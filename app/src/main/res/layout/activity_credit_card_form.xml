@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp" >
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:text="back"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:backgroundTint="#FFFFFF" />
+
+    <Button
+        android:id="@+id/purchase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Complete Order"
+        app:backgroundTint="#3C48B5" />
+
+    <TextView
+        android:id="@+id/creditCardForm"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:background="#FFFFFF"
+        android:gravity="center"
+        android:text="Credit Card Form"
+        android:textColor="#000000"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/enterCardNum"
+        android:layout_width="500dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/creditCardForm"
+        android:hint="xxxx xxxx xxxx xxxx"
+        android:textSize="20dp" />
+
+
+    <TextView
+        android:id="@+id/creditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/enterCardNum"
+        android:text="Card Number" />
+
+    <EditText
+        android:id="@+id/enterDate"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:hint="MM/YY"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/dateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Exp Date"
+        android:layout_below="@id/enterDate"/>
+
+    <EditText
+        android:id="@+id/enterCvv"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="150dp"
+        android:hint="CVC " />
+
+    <TextView
+        android:id="@+id/cvvText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/enterCvv"
+        android:layout_marginLeft="150dp"
+        android:text="Security Code " />
+
+    <TextView
+        android:id="@+id/zipText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/enterZip"
+        android:layout_marginLeft="275dp"
+        android:text="Zip Code" />
+
+    <EditText
+        android:id="@+id/enterZip"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="275dp"
+        android:layout_marginTop="150dp"
+        android:hint="Zip Code"
+        android:textSize="20dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="350dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="150dp"
+        android:maxHeight="150dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/payment" />
+
+</RelativeLayout>
