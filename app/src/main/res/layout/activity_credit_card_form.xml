@@ -41,7 +41,8 @@
         android:layout_marginTop="20dp"
         android:layout_below="@id/creditCardForm"
         android:hint="xxxx xxxx xxxx xxxx"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:inputType="number"/>
 
 
     <TextView
@@ -57,7 +58,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:hint="MM/YY"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:inputType="number"/>
 
     <TextView
         android:id="@+id/dateText"
@@ -72,7 +74,8 @@
         android:layout_height="48dp"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="150dp"
-        android:hint="CVC " />
+        android:hint="CVC "
+        android:inputType="number"/>
 
     <TextView
         android:id="@+id/cvvText"
@@ -97,7 +100,8 @@
         android:layout_marginLeft="275dp"
         android:layout_marginTop="150dp"
         android:hint="Zip Code"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:inputType="number"/>
 
     <ImageView
         android:layout_width="wrap_content"

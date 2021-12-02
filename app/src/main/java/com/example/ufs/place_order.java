@@ -41,6 +41,8 @@ public class place_order extends AppCompatActivity implements order_item.orderIt
     public ArrayList<Food> menu = new ArrayList<>();
     public ArrayList<Order> bag = new ArrayList<>();
 
+    public String restaurant;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +78,7 @@ public class place_order extends AppCompatActivity implements order_item.orderIt
             public void onClick(View view) {
                 String userId = mAuth.getCurrentUser().getUid().toString().trim();
                 mDatabase.child(userId).setValue(bag);
+                mDatabase.child(userId).child("restaurant").setValue(restaurant);
 
                 Intent bagIntent = new Intent(getApplicationContext(), bag.class );
                 startActivity(bagIntent);
@@ -105,7 +108,7 @@ public class place_order extends AppCompatActivity implements order_item.orderIt
             listdata.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    String restaurant = listdata.getItemAtPosition(i).toString().trim();
+                    restaurant = listdata.getItemAtPosition(i).toString().trim();
                     goToRestaurant(restaurant);
                 }
             });

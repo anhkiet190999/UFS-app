@@ -56,9 +56,12 @@ public class bag extends AppCompatActivity {
                 bag.clear();
                 if(snapshot.exists()){
                     for(DataSnapshot ds : snapshot.getChildren()){
-                        Order o = ds.getValue(Order.class);
-                        bag.add(o);
-                        total_price += o.getTotal_price();
+                        if(ds.getKey() != "restaurant"){
+                            Order o = ds.getValue(Order.class);
+                            bag.add(o);
+                            total_price += o.getTotal_price();
+                        }
+
                     }
                     DecimalFormat df2 = new DecimalFormat("####.##");
                     df2.format(total_price);

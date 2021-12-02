@@ -24,7 +24,7 @@ public class home extends AppCompatActivity {
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private ProgressBar progressBar;
     private DatabaseReference mref = FirebaseDatabase.getInstance().getReference("User");
-    ImageButton order, bag;
+    ImageButton order, bag, delivery;
     private TextView text;
 
     @Override
@@ -38,6 +38,7 @@ public class home extends AppCompatActivity {
         bag = findViewById(R.id.bag);
         search = findViewById(R.id.search);
         text = findViewById(R.id.name);
+        delivery = findViewById(R.id.delivery);
 
         mref = mref.child(mAuth.getCurrentUser().getUid());
 
@@ -79,6 +80,11 @@ public class home extends AppCompatActivity {
         bag.setOnClickListener(view -> {
             Intent bagIntent = new Intent(getApplicationContext(), bag.class );
             startActivity(bagIntent);
+        });
+
+        delivery.setOnClickListener(view -> {
+            Intent deliveryIntent = new Intent(getApplicationContext(), delivery.class );
+            startActivity(deliveryIntent);
         });
 
         search.setOnClickListener(new View.OnClickListener() {
