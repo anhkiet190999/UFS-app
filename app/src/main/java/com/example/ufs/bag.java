@@ -49,19 +49,16 @@ public class bag extends AppCompatActivity {
             startActivity(paymentIntent);
         });
 
-        mDatabase = FirebaseDatabase.getInstance().getReference("Order").child(mAuth.getCurrentUser().getUid());
+        mDatabase = FirebaseDatabase.getInstance().getReference("Order").child(mAuth.getCurrentUser().getUid()).child("bag");
         ValueEventListener eventListener1 = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 bag.clear();
                 if(snapshot.exists()){
                     for(DataSnapshot ds : snapshot.getChildren()){
-                        if(ds.getKey() != "restaurant"){
-                            Order o = ds.getValue(Order.class);
-                            bag.add(o);
-                            total_price += o.getTotal_price();
-                        }
-
+                        Order o = ds.getValue(Order.class);
+                        bag.add(o);
+                        total_price += o.getTotal_price();
                     }
                     DecimalFormat df2 = new DecimalFormat("####.##");
                     df2.format(total_price);

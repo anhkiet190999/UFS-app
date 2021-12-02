@@ -77,7 +77,7 @@ public class place_order extends AppCompatActivity implements order_item.orderIt
             @Override
             public void onClick(View view) {
                 String userId = mAuth.getCurrentUser().getUid().toString().trim();
-                mDatabase.child(userId).setValue(bag);
+                mDatabase.child(userId).child("bag").setValue(bag);
                 mDatabase.child(userId).child("restaurant").setValue(restaurant);
 
                 Intent bagIntent = new Intent(getApplicationContext(), bag.class );

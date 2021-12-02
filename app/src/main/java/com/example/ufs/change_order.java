@@ -51,7 +51,7 @@ public class change_order extends AppCompatDialogFragment {
         remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mDatabase = FirebaseDatabase.getInstance().getReference("Order").child(mAuth.getCurrentUser().getUid());
+                mDatabase = FirebaseDatabase.getInstance().getReference("Order").child(mAuth.getCurrentUser().getUid()).child("bag");
 
 
                 ValueEventListener eventListener = new ValueEventListener() {
